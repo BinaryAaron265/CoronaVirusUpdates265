@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID-19 Update App for [Malawi]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .statistics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap:50px;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        background: linear-gradient(to bottom, #00a1ff, #00ff8f);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 200px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        color: white;
+    }  .info {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-family: 'Courier New', Courier, monospace;">COVID-19 Update App - Malawi</h1>
+    </header>
+
+    <main>
+        <section class="statistics" style="padding: 60px;">
+            <div class="card">
+                <h2>Total Cases</h2>
+                <p id="cases">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Total Deaths</h2>
+                <p id="deaths">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Total Recoveries</h2>
+                <p id="recovered">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Active Cases</h2>
+                <p id="active">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Tests</h2>
+                <p id="tests">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Critical Cases</h2>
+                <p id="critical">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>New Cases Today</h2>
+                <p id="today-cases">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>New Deaths Today</h2>
+                <p id="today-deaths">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Cases per Million</h2>
+                <p id="cases-per-million">Loading...</p>
+            </div>
+            <div class="card">
+                <h2>Deaths per Million</h2>
+                <p id="deaths-per-million">Loading...</p>
+            </div>
+        </section>
+
+        <section style="background-color: beige;">
+            <h2 style="text-align: center; color: brown; padding-top: 20px;">INFORMATION</h2>
+            <div class="info">
+                <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center;">How Vaccines Work</h2>
+                <p style="text-align: center;">------------------------------------------------------</p>
+                <p style="text-align: center;">------------------------------------------------------</p>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Vaccines help prevent infectious diseases by training the immune system to recognize and fight off specific pathogens, such as viruses or bacteria.</p>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Most vaccines contain weakened or inactivated versions of the pathogen, or pieces of the pathogen, that can't cause disease but still trigger an immune response. Some vaccines, such as mRNA vaccines, contain genetic material that instructs cells to produce harmless pieces of the pathogen.</p>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">When a person receives a vaccine, their immune system responds by producing antibodies and other immune cells that can recognize and attack the specific pathogen in the future. If the person is later exposed to the pathogen, their immune system can quickly mount a defense and prevent or reduce the severity of the disease.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; [2023] [Covid_Stats_Malawi]. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="[App Contact Page URL]">Contact Us</a></li>
+                <li><a href="[App Facebook Page URL]">Facebook</a></li>
+                <li><a href="[App Twitter Page URL]">Twitter</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        const apiEndpoint = 'https://disease.sh/v3/covid-19/countries/malawi';
+
+        // Fetch data from API
+        fetch(apiEndpoint)
+            .then(response => response.json())
+            .then(data => {
+                // Update statistics cards
+                document.getElementById('cases').textContent = data.cases.toLocaleString();
+                document.getElementById('deaths').textContent = data.deaths.toLocaleString();
+                document.getElementById('recovered').textContent = data.recovered.toLocaleString();
+                document.getElementById('active').textContent = data.active.toLocaleString();
+                document.getElementById('tests').textContent = data.tests.toLocaleString();
+                document.getElementById('critical').textContent = data.critical.toLocaleString();
+                document.getElementById('today-cases').textContent = data.todayCases.toLocaleString();
+                document.getElementById('today-deaths').textContent = data.todayDeaths.toLocaleString();
+                document.getElementById('cases-per-million').textContent = data.casesPerOneMillion.toLocaleString();
+                document.getElementById('deaths-per-million').textContent = data.deathsPerOneMillion.toLocaleString();
+            })
+            .catch(error => {
+                console.error('Error fetching data from API:', error);
+            });
+    </script>
+</body>
+</html>

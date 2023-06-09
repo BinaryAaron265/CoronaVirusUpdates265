@@ -1,0 +1,11 @@
+{
+  "name": "covidmw",
+  "version": "1.0.0",
+  "description": "this app is for pulling corona virus stats from a RestApi and displaying on an HTML+CSS page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Amasi",
+  "license": "ISC"
+}
