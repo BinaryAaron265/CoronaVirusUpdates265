@@ -1,4 +1,4 @@
-
+// Covid API for Malawi Data but can be changed to any country of choice
    const apiEndpoint = 'https://disease.sh/v3/covid-19/countries/malawi';
 
         // Fetch data from API
